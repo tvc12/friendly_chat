@@ -11,42 +11,58 @@ class UserScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'List user',
-          style: TTextStyles.black(fontSize: 16, color: TColors.white),
+    return Stack(
+      children: <Widget>[
+        Container(
+          height: 56,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: <Color>[
+                Color.fromARGB(255, 255, 246, 183),
+                Color.fromARGB(255, 246, 65, 108),
+              ],
+              stops: <double>[0, 1],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
         ),
-        centerTitle: true,
-      ),
-      body: StreamBuilder<QuerySnapshot>(
-        stream: Firestore.instance.collection('users').snapshots(),
-        builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) {
-            return Center(
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(TColors.green),
-              ),
-            );
-          } else {
-            return ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              padding: EdgeInsets.all(10.0),
-              itemBuilder: (_, int index) => UserItemWidget(
-                documentSnapshot: snapshot.data.documents[index],
-                onTap: _onTap,
-              ),
-              itemCount: snapshot.data.documents.length,
-            );
-          }
-        },
-      ),
+        Scaffold(
+          appBar: AppBar(
+            title: Text(
+              'List user',
+              style: TTextStyles.black(fontSize: 16, color: TColors.white),
+            ),
+            centerTitle: true,
+          ),
+          body: StreamBuilder<QuerySnapshot>(
+            stream: Firestore.instance.collection('users').snapshots(),
+            builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (!snapshot.hasData) {
+                return Center(
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(TColors.green),
+                  ),
+                );
+              } else {
+                return ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  padding: EdgeInsets.all(10.0),
+                  itemBuilder: (_, int index) => UserItemWidget(
+                    documentSnapshot: snapshot.data.documents[index],
+                    onTap: _onTap,
+                  ),
+                  itemCount: snapshot.data.documents.length,
+                );
+              }
+            },
+          ),
+        ),
+      ],
     );
   }
 
-  void _onTap(DocumentSnapshot documentSnapshot) {
-
-  }
+  void _onTap(DocumentSnapshot documentSnapshot) {}
 }
 
 class UserItemWidget extends StatelessWidget {
