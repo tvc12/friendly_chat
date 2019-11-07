@@ -47,7 +47,7 @@ flutter run
 ### Sreenshoots
 
 ![](flutter_01.png)
-![](flutter_02.png)
+![](flutter_03.png)
 
 ### Contributors
 

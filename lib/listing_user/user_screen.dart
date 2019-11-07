@@ -14,7 +14,6 @@ class UserScreen extends StatelessWidget {
     return Stack(
       children: <Widget>[
         Container(
-          height: 56,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: <Color>[
@@ -28,7 +27,10 @@ class UserScreen extends StatelessWidget {
           ),
         ),
         Scaffold(
+          backgroundColor: Colors.transparent,
           appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
             title: Text(
               'List user',
               style: TTextStyles.black(fontSize: 16, color: TColors.white),
@@ -58,6 +60,7 @@ class UserScreen extends StatelessWidget {
             },
           ),
         ),
+      
       ],
     );
   }
