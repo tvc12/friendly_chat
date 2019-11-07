@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 abstract class TStatelessWidget extends StatelessWidget {
+  
+  const TStatelessWidget({Key key}) : super(key: key);
+
   Future<T> navigateToScreen<T>({
     @required BuildContext context,
     @required Widget screen,
