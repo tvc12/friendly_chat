@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:bloc/bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_template/login/bloc/bloc.dart';
 
 ///------------------------------------------------
@@ -49,6 +50,8 @@ class CompletedInitMainAppState extends MainAppState {
 class MainAppBloc extends Bloc<MainAppEvent, MainAppState> {
   final AuthenticationBloc authBloc = AuthenticationBloc();
 
+  FirebaseUser fireBase;
+  // Auth
   @override
   MainAppState get initialState => InitMainAppState();
 
