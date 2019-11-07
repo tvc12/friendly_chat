@@ -28,8 +28,8 @@ This is a boilerplate for flutter mobile application with bloc
 - Clone this project:
 
 ```bash
-git clone https://github.com/tvc12/flutter_template
-cd flutter_template
+git clone https://github.com/tvc12/friendly_chat
+cd friendly_chat
 ```
 
 - Get packages from **pub** for Flutter app:
@@ -46,6 +46,8 @@ flutter run
 
 ### Sreenshoots
 
+![](flutter_01.png)
+![](flutter_02.png)
 
 ### Contributors
 
